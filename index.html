@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>List Compare</title>
+
+<script src="listCompare.js"></script>
+
+<style>
+body {
+      font-family: Verdana, Geneva, sans-serif
+}
+h1 {
+  color: #cc6600;
+}
+p, li {
+  font-size: 10pt;
+}
+.endNote {
+  font-size: 8pt;
+}
+.main {
+    background-color: #cc6600;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 3px 2px;
+    cursor: pointer;
+}
+.tool {
+    background-color: #66ccff;
+    border: none;
+    color: black;
+    padding: 3px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 1px 1px;
+    cursor: pointer;
+}
+#paraPerfect {
+  visibility: hidden;
+  background-color: #ccffcc;
+}
+#paraClose {
+  visibility: hidden;
+  background-color: #ffcc99;
+}
+#resultsHeader {
+  visibility: hidden;
+}
+</style>
+</head>
+
+
+
+<body onLoad="loadLocalStorage(); postVersionNotes(); testing();">
+
+<h1>List Compare</h1>
+<p>Copy/paste a list of names in each box to find matches.<br/>
+    Saves left box list to browser local storage for easy repeat use.</p>
+
+
+<div id="lists">
+<table border=0>
+  <tr>
+    <th width="430px">Your Students
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      Other List</th>
+    <th id="resultsHeader">Results</th>
+  </tr>
+
+  <tr>
+    <td align="center" valign="top">
+      <textarea id="yourStudents" rows=10 cols=30></textarea>
+      <textarea id="otherList" rows=10 cols=30></textarea><br/>
+      <button class="tool" type="button" onclick="clearBox('yourStudents');">Clear Your Students</button>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <button class="tool" type="button" onclick="clearBox('otherList');">Clear Other List</button><br/>
+      <button class="main" type="button" onclick="checkNames();">Compare!</button>
+
+      <!--<br/><button class="tool" type="button" onclick="testing();">test runs</button>-->
+    </td>
+
+    <td rowspan=2 align="left" valign="top">
+          <p id="paraPerfect">Perfect Match<br/>
+              <ul id="listPerfect">
+              </ul>
+          </p>
+          <p id="paraClose">Close Match<br/>
+              <ul id="listClose">
+              </ul>
+          </p>
+    </td>
+  </tr>
+</table>
+</div>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p id="versionNotes" class="endNote"></p>
+<p class="endNote">work in progress, questions &#38; suggestions welcome! @maskSnorkelFins or theforester@gmail.com</p>
+
+<p class="endNote">planned changes:
+  <ul>
+    <li class="endNote">use regex to remove special chars</li>
+    <li class="endNote">add sensitivity adjustment</li>
+    <li class="endNote">change list names to list1, list2</li>
+    <li class="endNote">add list2 local storage save</li>
+    <li class="endNote">add "click to confirm" for close matches</li>
+  </ul>
+</p>
+
+</body>
+</html>
