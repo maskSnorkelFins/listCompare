@@ -23,7 +23,7 @@ This script works great right here, hosted on GitHub.io.  Feel free to download,
 
 
 Author
-Michael Hobson - Initial work - @maskSnorkelFins
+Michael Hobson - initial work - @maskSnorkelFins
 
 
 
