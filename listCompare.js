@@ -18,8 +18,8 @@ function testing() {
 function checkNames() {
   var requiredScoreWhole = .7;
   var requiredScoreSplit = .75;
-  var requiredScoreLast = .9;
-  var requiredScoreFirst = .5;
+  var requiredScoreLast = .8;
+  var requiredScoreFirst = .4;
 
   var calculations = 0;
 
@@ -315,7 +315,7 @@ function scrubArray(array) {
 
   // remove special chars
   for (var i = 0; i < array.length; i++) {
-      array[i] = array[i].replace('\t',' ');
+      array[i] = array[i].replace('\t','');
       array[i] = array[i].replace('~','');
       array[i] = array[i].replace('!','');
       array[i] = array[i].replace('@','');
@@ -348,7 +348,6 @@ function scrubArray(array) {
       // remove whitespace
       for (var j = 0; j < array[i].length; j++) {
         if (/\S/.test(array[i][j])) {
-          // console.log("No whitespace at " + j);
           array[i] = array[i].slice(j, array[i].length);
           break;
         }
