@@ -1,10 +1,3 @@
-function postVersionNotes() {
-  var thisVersion = "v70 - adjusting sensitivity<br/>" +
-                    "";
-  document.getElementById("versionNotes").innerHTML = thisVersion;
-}
-
-
 function testing() {
   test1();
   function test1() {
@@ -23,20 +16,15 @@ function checkNames() {
 
   var calculations = 0;
 
-  var matchCountWhole = 0;
-  var matchCountSplit = 0;
-
   var scoresWhole = [];
-  var scoresWhole_flip = [];
   var jWhole = [];
+  var scoresWhole_flip = [];
   var jWhole_flip = [];
 
   var scoresSplit = [];
   var jSplit = [];
 
   var resultReport = [];
-
-  var runFlipChecks = true;
 
 
 
@@ -250,7 +238,7 @@ var closeWholeReported = 0;
             thisScore = thisScoreSplit;
           }
 
-          resultReport[i] = thisScore + "% " + yourStudents_Scrub[i] + " \xa0 / \xa0 " + otherList_Scrub[jWhole[i]];
+          resultReport[i] = thisScore + "% " + yourStudents_Scrub[i] + " = " + otherList_Scrub[jWhole[i]] + "?";
               console.log(resultReport[i]);
               reportCloseMatch(resultReport[i]);
               closeWholeReported++;
@@ -263,8 +251,6 @@ var closeWholeReported = 0;
 
     console.log("\n");
     console.log(calculations + " calculations");
-    console.log(matchCountWhole + " total WHOLE matches");
-    console.log(matchCountSplit + " total SPLIT matches");
     console.log("\n\n\n");
 } // end checkNames()
 
