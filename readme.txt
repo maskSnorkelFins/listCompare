@@ -6,7 +6,6 @@ Copy/paste two lists of names and press the Compare! button to find name matches
 - no need to "scrub" each list, special characters are automatically removed, so copy/paste from any source, including a spreadsheet
 
 
-
 Planned Changes
 - switch to regex to remove special characters
 - switch from parallel lists to multidimensional arrays
@@ -16,15 +15,12 @@ Planned Changes
 - add "click to confirm" for close matches
 
 
-
 Getting Started
 This script works great right here, hosted on GitHub.io.  Feel free to download, adapt and install on another server.
 
 
-
 Author
 Michael Hobson - initial work - @maskSnorkelFins
-
 
 
 Acknowledgments
@@ -35,7 +31,6 @@ https://stackoverflow.com/questions/10473745/compare-strings-javascript-return-o
 
 Appears to be adapted from googlicius GitHub repository similarity.js:
 https://gist.github.com/googlicius/a68a05473c3c73a7fe0e7d45872f8358
-
 
 
 License
