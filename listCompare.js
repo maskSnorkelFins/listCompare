@@ -406,9 +406,9 @@ function loadLocalStorage() {
 /*
       LEVENSHTEIN DISTANCE COMPARISON
       This script posted by overlord1234 on Stack Overflow:
-      https://stackoverflow.com/questions/10473745/compare-strings-javascript-return-of-likely?answertab=votes#tab-top
+      https://stackoverflow.com/a/36566052/1427748
 
-      Appears to be adapted from googlicius GitHub repository similarity.js:
+      Found it via googlicius GitHub repository similarity.js:
       https://gist.github.com/googlicius/a68a05473c3c73a7fe0e7d45872f8358
 
 */
