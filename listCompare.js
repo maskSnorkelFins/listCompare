@@ -237,6 +237,7 @@ var perfectWholeReported = 0;
 var closeWholeReported = 0;
     for (var i = 0; i < yourStudents_Scrub.length; i++) {
       if ((scoresSplit[i] > scoresWhole[i]) &&
+           (scoresSplit[i] < 1) &&
           ((scoresWhole[i] < 1 && scoresWhole[i] >= requiredScoreWhole) ||
            (scoresSplit[i] < 1 && scoresSplit[i] >= requiredScoreSplit))) {
 
