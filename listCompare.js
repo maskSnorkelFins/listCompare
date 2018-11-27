@@ -1,7 +1,13 @@
+/*
+Given a short otherList, scoresFlip can be higher than scoresWhole, resulting
+in higher score, causing search to flip list when this shouldn't happen.
+Need to base flip decision on whether perfect matches are obtained.
+*/
+
 function testing() {
   test1();
   function test1() {
-    console.log("test 1");
+    console.log("test tab removal");
   }
   console.log("test runs complete\n\n");
 } // end testing()
@@ -23,6 +29,9 @@ function checkNames() {
 
   var scoresSplit = [];
   var jSplit = [];
+
+  var scoresWhole_bestMatch = [];
+  var jWhole_bestMatch = [];
 
   var resultReport = [];
 
@@ -59,8 +68,7 @@ function checkNames() {
 
           function flipCommaList(array) {
           // flips list if "lastname, firstname"
-            if (array[0].includes(",") || array[1].includes(",") || array[2].includes(",") ||
-                array[3].includes(",") ||  array[4].includes(",")) {
+            if (array[0].includes(",") || array[1].includes(",") || array[2].includes(",")) {
               for (var i = 0; i < array.length; i++) {
                   var split = array[i].split(", ");
                   array[i] = split[1] + " " + split[0];
@@ -123,6 +131,10 @@ function checkNames() {
       console.log(jWhole);
       console.log(jWhole_flip);
 
+              // make backups before flip check
+              scoresWhole_bestMatch = scoresWhole.slice();
+              jWhole_bestMatch = jWhole.slice();
+
       // switch otherList to flipped version if that list produces higher match scores
       function getSum(total, num) {
           return total + num;
@@ -144,6 +156,16 @@ function checkNames() {
       else {
           console.log("no need to flip otherList");
       }
+
+      // take highest result between scoresWhole_bestMatch and scoresWhole_flip
+      for (var i = 0; i < scoresWhole_bestMatch.length; i++) {
+          if (scoresWhole_flip[i] > scoresWhole_bestMatch[i]) {
+              scoresWhole_bestMatch[i] = scoresWhole_flip[i];
+              jWhole_bestMatch[i] = jWhole_flip[i];
+              console.log("took flipped score for " + scoresWhole_bestMatch[i]);
+          }
+      }
+      console.log("scoresWhole_bestMatch = " + scoresWhole_bestMatch);
   } // end checkWhole()
 
 
@@ -207,7 +229,7 @@ function checkNames() {
 var perfectWholeReported = 0;
 
     for (var i = 0; i < yourStudents_Scrub.length; i++) {
-      if (scoresWhole[i] == 1 || scoresSplit[i] == 1) {
+      if (scoresWhole_bestMatch[i] == 1 || scoresSplit[i] == 1) {
 
           resultReport[i] = yourStudents_Scrub[i];
               console.log(resultReport[i]);
@@ -224,12 +246,12 @@ var perfectWholeReported = 0;
 
 var closeWholeReported = 0;
     for (var i = 0; i < yourStudents_Scrub.length; i++) {
-      if ((scoresSplit[i] > scoresWhole[i]) &&
+      if ((scoresSplit[i] > scoresWhole_bestMatch[i]) &&
            (scoresSplit[i] < 1) &&
-          ((scoresWhole[i] < 1 && scoresWhole[i] >= requiredScoreWhole) ||
+          ((scoresWhole_bestMatch[i] < 1 && scoresWhole_bestMatch[i] >= requiredScoreWhole) ||
            (scoresSplit[i] < 1 && scoresSplit[i] >= requiredScoreSplit))) {
 
-          var thisScore = (Math.round(scoresWhole[i] * 100));
+          var thisScore = (Math.round(scoresWhole_bestMatch[i] * 100));
           var thisScoreSplit = (Math.round(scoresSplit[i] * 100));
 
           console.log(thisScore + " vs " + thisScoreSplit + " on " + yourStudents_Scrub[i]);
@@ -238,7 +260,7 @@ var closeWholeReported = 0;
             thisScore = thisScoreSplit;
           }
 
-          resultReport[i] = thisScore + "% " + yourStudents_Scrub[i] + " = " + otherList_Scrub[jWhole[i]] + "?";
+          resultReport[i] = thisScore + "% " + yourStudents_Scrub[i] + " = " + otherList_Scrub[jWhole_bestMatch[i]] + "?";
               console.log(resultReport[i]);
               reportCloseMatch(resultReport[i]);
               closeWholeReported++;
@@ -290,7 +312,6 @@ function firstNames(array) {
   for (var i = 0; i < array.length; i++) {
       var split = array[i].split(" ");
       array[i] = split[0].substring(0, nickname); // take first # letters of firstname
-      console.log("I grabbed FIRSTname " + array[i]);
   }
 }
 
@@ -302,7 +323,8 @@ function scrubArray(array) {
 
   // remove special chars
   for (var i = 0; i < array.length; i++) {
-      array[i] = array[i].replace('\t','');
+      array[i] = array[i].replace(/[^\x00-\x7F]/g, "");
+      array[i] = array[i].replace('\t',' ');
       array[i] = array[i].replace('~','');
       array[i] = array[i].replace('!','');
       array[i] = array[i].replace('@','');
@@ -331,6 +353,7 @@ function scrubArray(array) {
       array[i] = array[i].replace('>','');
       array[i] = array[i].replace('/','');
       array[i] = array[i].replace('?','');
+      array[i] = array[i].replace('  ',' ');
 
       // remove whitespace
       for (var j = 0; j < array[i].length; j++) {
@@ -340,8 +363,8 @@ function scrubArray(array) {
         }
       }
   } // end loop (removal special chars)
-  console.log("scrub 1, special chars removed:");
-  console.log("scrub 2, whitespace removed:");
+  console.log("scrub 1, special chars removed");
+  console.log("scrub 2, whitespace removed");
   console.log(array);
 
   // remove short <4 chars
@@ -351,7 +374,7 @@ function scrubArray(array) {
       i--;
     }
   }
-  console.log("scrub 3, length < 4 removed:");
+  console.log("scrub 3, length < 4 removed");
   console.log(array);
 
   // remove madonnas
@@ -363,7 +386,7 @@ function scrubArray(array) {
       i--;
     }
   }
-  console.log("scrub 4, madonnas removed:");
+  console.log("scrub 4, madonnas removed");
   console.log(array);
 } // end scrubArray()
 
