@@ -1,13 +1,7 @@
-/*
-Given a short otherList, scoresFlip can be higher than scoresWhole, resulting
-in higher score, causing search to flip list when this shouldn't happen.
-Need to base flip decision on whether perfect matches are obtained.
-*/
-
 function testing() {
   test1();
   function test1() {
-    console.log("test tab removal");
+    console.log("test 1");
   }
   console.log("test runs complete\n\n");
 } // end testing()
@@ -271,6 +265,33 @@ var closeWholeReported = 0;
     }
     document.getElementById("paraClose").style.visibility = "visible";
 
+
+var lesserWholeReported = 0;
+    for (var i = 0; i < yourStudents_Scrub.length; i++) {
+      if ((scoresWhole_bestMatch[i] < requiredScoreWhole && scoresWhole_bestMatch[i] > (requiredScoreWhole - .05)) ||
+           (scoresSplit[i] < requiredScoreSplit && scoresSplit[i] > (requiredScoreSplit - .05))) {
+
+          var thisScore = (Math.round(scoresWhole_bestMatch[i] * 100));
+          var thisScoreSplit = (Math.round(scoresSplit[i] * 100));
+
+          console.log(thisScore + " vs " + thisScoreSplit + " on " + yourStudents_Scrub[i]);
+
+          if (thisScoreSplit > thisScore) {
+            thisScore = thisScoreSplit;
+          }
+
+          resultReport[i] = thisScore + "% " + yourStudents_Scrub[i] + " = " + otherList_Scrub[jWhole_bestMatch[i]] + "?";
+              console.log(resultReport[i]);
+              reportLesserMatch(resultReport[i]);
+              lesserWholeReported++;
+      }
+    }
+    if (lesserWholeReported == 0) {
+        reportLesserMatch("none");
+    }
+    document.getElementById("paraLesser").style.visibility = "visible";
+
+
     console.log("\n");
     console.log(calculations + " calculations");
     console.log("\n\n\n");
@@ -295,6 +316,13 @@ function reportCloseMatch(report) {
     var textnode = document.createTextNode(report);
     node.appendChild(textnode);
     document.getElementById("listClose").appendChild(node);
+}
+function reportLesserMatch(report) {
+// having trouble abstracting this to cover perfect matches as well
+    var node = document.createElement("LI");
+    var textnode = document.createTextNode(report);
+    node.appendChild(textnode);
+    document.getElementById("listLesser").appendChild(node);
 }
 
 

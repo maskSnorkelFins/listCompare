@@ -21,8 +21,8 @@ p, li {
 }
 #compare {
     position: absolute;
-    top: 350px;
-    left: 230px;
+    top: 360px;
+    left: 210px;
     background-color: #cc6600;
     border: none;
     color: white;
@@ -30,7 +30,7 @@ p, li {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 20px;
+    font-size: 16px;
     margin: 3px 2px;
     cursor: pointer;
 }
@@ -46,15 +46,18 @@ p, li {
     margin: 1px 1px;
     cursor: pointer;
 }
+#resultsHeader {
+  visibility: hidden;
+}
 #paraPerfect {
   visibility: hidden;
   background-color: #ccffcc;
 }
 #paraClose {
   visibility: hidden;
-  background-color: #ffcc99;
+  background-color: #ffff99;
 }
-#resultsHeader {
+#paraLesser {
   visibility: hidden;
 }
 .col1 {
@@ -79,7 +82,7 @@ p, li {
 }
 .row3 {
   position: absolute;
-  top: 300px;
+  top: 330px;
 }
 #footer {
   position: absolute;
@@ -97,13 +100,13 @@ p, li {
 <h1>List Compare</h1>
 <p>Copy/paste a list of names in each box to find matches.</p>
 
-<div id="lists">
+<!--<div id="lists">-->
 <div class="row1 col1">Your Students</div>
 <div class="row1 col2">Other List</div>
 <div id="resultsHeader" class="row1 col3">Results</div>
 
-<textarea id="yourStudents" class="row2 col1" rows=10 cols=30></textarea>
-<textarea id="otherList" class="row2 col2" rows=10 cols=30></textarea><br/>
+<textarea id="yourStudents" class="row2 col1" rows=12 cols=30></textarea>
+<textarea id="otherList" class="row2 col2" rows=12 cols=30></textarea><br/>
 
 <button class="tool row3 col1" type="button" onclick="clearBox('yourStudents');">Clear Your Students</button>
 <button class="tool row3 col2" type="button" onclick="clearBox('otherList');">Clear Other List</button><br/>
@@ -116,6 +119,11 @@ p, li {
 </p>
 <p id="paraClose">Close Match<br/>
     <ul id="listClose"></ul>
+</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p id="paraLesser">Lesser Match<br/>
+    <ul id="listLesser"></ul>
 </p>
 </div>
 
