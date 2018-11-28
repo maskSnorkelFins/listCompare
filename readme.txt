@@ -7,11 +7,9 @@ Copy/paste two lists of names and press the Compare! button to find name matches
 
 
 Planned Changes
-- switch to regex to remove special characters
-- switch from parallel lists to multidimensional arrays
 - add sensitivity adjustment
+- switch to regex to remove special characters
 - change list names to list1, list2
-- add list2 local storage save
 - add "click to confirm" for close matches
 
 

@@ -11,8 +11,8 @@ function testing() {
 function checkNames() {
   var requiredScoreWhole = .7;
   var requiredScoreSplit = .75;
-  var requiredScoreLast = .8;
-  var requiredScoreFirst = .4;
+  var requiredScoreLast = .80;
+  var requiredScoreFirst = .45;
 
   var calculations = 0;
 
@@ -254,7 +254,7 @@ var closeWholeReported = 0;
             thisScore = thisScoreSplit;
           }
 
-          resultReport[i] = thisScore + "% " + yourStudents_Scrub[i] + " = " + otherList_Scrub[jWhole_bestMatch[i]] + "?";
+          resultReport[i] = thisScore + "% " + yourStudents_Scrub[i] + " → " + otherList_Scrub[jWhole_bestMatch[i]] + "?";
               console.log(resultReport[i]);
               reportCloseMatch(resultReport[i]);
               closeWholeReported++;
@@ -280,7 +280,7 @@ var lesserWholeReported = 0;
             thisScore = thisScoreSplit;
           }
 
-          resultReport[i] = thisScore + "% " + yourStudents_Scrub[i] + " = " + otherList_Scrub[jWhole_bestMatch[i]] + "?";
+          resultReport[i] = thisScore + "% " + yourStudents_Scrub[i] + " → " + otherList_Scrub[jWhole_bestMatch[i]] + "?";
               console.log(resultReport[i]);
               reportLesserMatch(resultReport[i]);
               lesserWholeReported++;
