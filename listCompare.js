@@ -10,8 +10,8 @@ function testing() {
 
 function checkNames() {
   var requiredScoreWhole = .7;
-  var requiredScoreSplit = .75;
-  var requiredScoreLast = .80;
+  var requiredScoreSplit = .7;
+  var requiredScoreLast = .7;
   var requiredScoreFirst = .45;
 
   var calculations = 0;
@@ -234,6 +234,13 @@ var perfectWholeReported = 0;
     if (perfectWholeReported == 0) {
         reportPerfectMatch("none");
     }
+    if (perfectWholeReported == 1) {
+      document.getElementById("paraPerfect").innerHTML = "1 Perfect Match";
+    }
+    else {
+      document.getElementById("paraPerfect").innerHTML = perfectWholeReported + " Perfect Matches";
+    }
+
     document.getElementById("resultsHeader").style.visibility = "visible";
     document.getElementById("paraPerfect").style.visibility = "visible";
 
@@ -254,7 +261,7 @@ var closeWholeReported = 0;
             thisScore = thisScoreSplit;
           }
 
-          resultReport[i] = thisScore + "% " + yourStudents_Scrub[i] + " → " + otherList_Scrub[jWhole_bestMatch[i]] + "?";
+          resultReport[i] = thisScore + "% " + yourStudents_Scrub[i] + " → " + otherList_Scrub[jWhole_bestMatch[i]];
               console.log(resultReport[i]);
               reportCloseMatch(resultReport[i]);
               closeWholeReported++;
@@ -262,6 +269,12 @@ var closeWholeReported = 0;
     }
     if (closeWholeReported == 0) {
         reportCloseMatch("none");
+    }
+    if (closeWholeReported == 1) {
+      document.getElementById("paraClose").innerHTML = "1 Close Match";
+    }
+    else {
+      document.getElementById("paraClose").innerHTML = closeWholeReported + " Close Matches";
     }
     document.getElementById("paraClose").style.visibility = "visible";
 
@@ -288,6 +301,12 @@ var lesserWholeReported = 0;
     }
     if (lesserWholeReported == 0) {
         reportLesserMatch("none");
+    }
+    if (lesserWholeReported == 1) {
+      document.getElementById("paraLesser").innerHTML = "1 Lesser Match";
+    }
+    else {
+      document.getElementById("paraLesser").innerHTML = lesserWholeReported + " Lesser Matches";
     }
     document.getElementById("paraLesser").style.visibility = "visible";
 
