@@ -370,7 +370,8 @@ function scrubArray(array) {
 
   // remove special chars
   for (var i = 0; i < array.length; i++) {
-      array[i] = array[i].replace(/[^\x00-\x7F]/g, "");
+      array[i] = array[i].replace(/[^A-Za-z 0-9 \.,\?""!@#\$%\^&\*\(\)-_=\+;:<>\/\\\|\}\{\[\]`~]*/g, '');
+
       array[i] = array[i].replace('\t',' ');
       array[i] = array[i].replace('~','');
       array[i] = array[i].replace('!','');
@@ -400,6 +401,7 @@ function scrubArray(array) {
       array[i] = array[i].replace('>','');
       array[i] = array[i].replace('/','');
       array[i] = array[i].replace('?','');
+
       array[i] = array[i].replace('0','');
       array[i] = array[i].replace('1','');
       array[i] = array[i].replace('2','');
@@ -410,6 +412,7 @@ function scrubArray(array) {
       array[i] = array[i].replace('7','');
       array[i] = array[i].replace('8','');
       array[i] = array[i].replace('9','');
+
       array[i] = array[i].replace('  ',' ');
 
       // remove whitespace
