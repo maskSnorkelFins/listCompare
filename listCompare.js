@@ -400,6 +400,16 @@ function scrubArray(array) {
       array[i] = array[i].replace('>','');
       array[i] = array[i].replace('/','');
       array[i] = array[i].replace('?','');
+      array[i] = array[i].replace('0','');
+      array[i] = array[i].replace('1','');
+      array[i] = array[i].replace('2','');
+      array[i] = array[i].replace('3','');
+      array[i] = array[i].replace('4','');
+      array[i] = array[i].replace('5','');
+      array[i] = array[i].replace('6','');
+      array[i] = array[i].replace('7','');
+      array[i] = array[i].replace('8','');
+      array[i] = array[i].replace('9','');
       array[i] = array[i].replace('  ',' ');
 
       // remove whitespace
