@@ -22,7 +22,7 @@ Michael Hobson - initial work - @maskSnorkelFins
 
 
 Acknowledgments
-Thank you to Robert While and Suzanne Gerb for advice.
+Thank you to Robert While and Susan Gerb for advice.
 
 String comparison accomplished via a Levenshtein distance script posted by overlord1234 on Stack Overflow:
 https://stackoverflow.com/a/36566052/1427748
