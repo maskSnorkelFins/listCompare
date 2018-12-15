@@ -261,7 +261,7 @@ var closeWholeReported = 0;
             thisScore = thisScoreSplit;
           }
 
-          resultReport[i] = thisScore + "% " + yourStudents_Scrub[i] + " → " + otherList_Scrub[jWhole_bestMatch[i]];
+          resultReport[i] = thisScore + "% " + yourStudents_Scrub[i] + " \xa0→\xa0 " + otherList_Scrub[jWhole_bestMatch[i]];
               console.log(resultReport[i]);
               reportCloseMatch(resultReport[i]);
               closeWholeReported++;
@@ -293,7 +293,7 @@ var lesserWholeReported = 0;
             thisScore = thisScoreSplit;
           }
 
-          resultReport[i] = thisScore + "% " + yourStudents_Scrub[i] + " → " + otherList_Scrub[jWhole_bestMatch[i]] + "?";
+          resultReport[i] = thisScore + "% " + yourStudents_Scrub[i] + " \xa0→\xa0 " + otherList_Scrub[jWhole_bestMatch[i]] + "?";
               console.log(resultReport[i]);
               reportLesserMatch(resultReport[i]);
               lesserWholeReported++;
@@ -368,64 +368,25 @@ function scrubArray(array) {
   console.log("\n\noriginal array:");
   console.log(array);
 
-  // remove special chars
+// add .trim() method to remove whitespace from both ends of string
+
   for (var i = 0; i < array.length; i++) {
-      array[i] = array[i].replace(/[^A-Za-z 0-9 \.,\?""!@#\$%\^&\*\(\)-_=\+;:<>\/\\\|\}\{\[\]`~]*/g, '');
 
-      array[i] = array[i].replace('\t',' ');
-      array[i] = array[i].replace('~','');
-      array[i] = array[i].replace('!','');
-      array[i] = array[i].replace('@','');
-      array[i] = array[i].replace('#','');
-      array[i] = array[i].replace('$','');
-      array[i] = array[i].replace('%','');
-      array[i] = array[i].replace('^','');
-      array[i] = array[i].replace('&','');
-      array[i] = array[i].replace('*','');
-      array[i] = array[i].replace('(','');
-      array[i] = array[i].replace(')','');
-      array[i] = array[i].replace('_','');
-      array[i] = array[i].replace('=','');
-      array[i] = array[i].replace('+','');
-      array[i] = array[i].replace('[','');
-      array[i] = array[i].replace(']','');
-      array[i] = array[i].replace('{','');
-      array[i] = array[i].replace('}','');
-      array[i] = array[i].replace('\\','');
-      array[i] = array[i].replace('|','');
-      array[i] = array[i].replace(';','');
-      array[i] = array[i].replace(':','');
-      array[i] = array[i].replace('"','');
-      array[i] = array[i].replace('.','');
-      array[i] = array[i].replace('<','');
-      array[i] = array[i].replace('>','');
-      array[i] = array[i].replace('/','');
-      array[i] = array[i].replace('?','');
+    array[i] = array[i].trim();
+    array[i] = array[i].replace('\t',' ').replace('     ',' ').replace('    ',' ').replace('   ',' ').replace('  ',' ');
 
-      array[i] = array[i].replace('0','');
-      array[i] = array[i].replace('1','');
-      array[i] = array[i].replace('2','');
-      array[i] = array[i].replace('3','');
-      array[i] = array[i].replace('4','');
-      array[i] = array[i].replace('5','');
-      array[i] = array[i].replace('6','');
-      array[i] = array[i].replace('7','');
-      array[i] = array[i].replace('8','');
-      array[i] = array[i].replace('9','');
-
-      array[i] = array[i].replace('  ',' ');
-
-      // remove whitespace
-      for (var j = 0; j < array[i].length; j++) {
-        if (/\S/.test(array[i][j])) {
-          array[i] = array[i].slice(j, array[i].length);
-          break;
-        }
+    for (var j = 0; j < array[i].length; j++) {
+      if ("abcdefghijklmnopqrstuvwxyz-', ".split('').includes(array[i][j].toLowerCase())) {
+        console.log("this letter is fine");
       }
-  } // end loop (removal special chars)
-  console.log("scrub 1, special chars removed");
-  console.log("scrub 2, whitespace removed");
-  console.log(array);
+      else {
+        console.log("removing " + array[i][j] + " from " + array[i]);
+        array[i] = array[i].split(array[i][j]).join('');
+        console.log("it's now " + array[i]);
+        j--;
+      }
+    }
+  }
 
   // remove short <4 chars
   for (var i = 0; i < array.length; i++) {
@@ -448,6 +409,7 @@ function scrubArray(array) {
   }
   console.log("scrub 4, madonnas removed");
   console.log(array);
+
 } // end scrubArray()
 
 
