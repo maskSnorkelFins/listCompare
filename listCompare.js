@@ -372,9 +372,6 @@ function scrubArray(array) {
 
   for (var i = 0; i < array.length; i++) {
 
-    array[i] = array[i].trim();
-    array[i] = array[i].replace('\t',' ').replace('     ',' ').replace('    ',' ').replace('   ',' ').replace('  ',' ');
-
     for (var j = 0; j < array[i].length; j++) {
       if ("abcdefghijklmnopqrstuvwxyz-', ".split('').includes(array[i][j].toLowerCase())) {
         console.log("this letter is fine");
@@ -386,6 +383,9 @@ function scrubArray(array) {
         j--;
       }
     }
+    array[i] = array[i].trim();
+    array[i] = array[i].replace('\t',' ').replace('     ',' ').replace('    ',' ').replace('   ',' ').replace('  ',' ');
+    array[i] = array[i].trim();
   }
 
   // remove short <4 chars
