@@ -9,6 +9,16 @@ function testing() {
 
 
 function checkNames() {
+    var reportsLists = ['listPerfect','listClose','listLesser'];
+
+    for (var i = 0; i < reportsLists.length; i++) {
+        var thisNode = document.getElementById(reportsLists[i]);
+        while (thisNode.firstChild) {
+            thisNode.removeChild(thisNode.firstChild);
+        }
+    }
+
+
   var requiredScoreWhole = .7;
   var requiredScoreSplit = .7;
   var requiredScoreLast = .7;

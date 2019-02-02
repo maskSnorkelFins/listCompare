@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>List Compare</title>
+    <meta http-equiv="author" content="Michael Hobson" />
 
 <link rel="stylesheet" href="style.css">
 
@@ -25,10 +26,9 @@
 <textarea id="yourStudents" class="row2 col1" rows=12 cols=30></textarea>
 <textarea id="otherList" class="row2 col2" rows=12 cols=30></textarea><br/>
 
-<button class="tool row3 col1" type="button" onclick="clearBox('yourStudents');">Clear Your Students</button>
-<button class="tool row3 col2" type="button" onclick="clearBox('otherList');">Clear Other List</button><br/>
-<button id="compare" type="button" onclick="checkNames();">Compare!</button>
-<!--<br/><button class="tool" type="button" onclick="testing();">test runs</button>-->
+<div class="tool row3 col1" onclick="clearBox('yourStudents');">Clear Your Students</div>
+<div class="tool row3 col2" onclick="clearBox('otherList');">Clear Other List</div><br/>
+<span id="compare" onclick="checkNames();">Compare!</span>
 
 <div class="row2 col3">
 <p id="paraPerfect" >Perfect Match<br/>

@@ -11,19 +11,18 @@ p, li {
   font-size: 8pt;
 }
 #compare {
-    position: absolute;
-    top: 360px;
-    left: 210px;
-    background-color: #cc6600;
-    border: none;
-    color: white;
-    padding: 5px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 3px 2px;
-    cursor: pointer;
+  position: absolute;
+  top: 360px;
+  left: 180px;
+  z-index: 1;
+  display: inline-block;
+  padding: 5px;
+  margin: -2px;
+  font-size: 20px;
+  text-align: center;
+  color: #ffffff;
+  background-color: #cc6600;
+  cursor: pointer;
 }
 .tool {
     background-color: #66ccff;
